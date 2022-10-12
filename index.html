@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var ws = new WebSocket("ws://127.0.0.1:3002/connect_ws");
+
+        ws.onopen = function () {
+            // Web Socket 已连接上，在页面中显示消息
+            console.log("当前客户端已经连接到websocket服务器");
+
+            ws.send('34234234');
+
+        };
+      
+        // 接收消息后客户端处理方法
+        ws.onmessage = function (evt) {
+            console.log(evt.data);
+        };
+
+        // 关闭websocket
+        ws.onclose = function () {
+            // 关闭 websocket
+            console.log("连接已关闭...");
+        };
+    </script>
+</body>
+
+</html>
